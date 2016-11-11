@@ -7,4 +7,5 @@
   <author email="cpetrov@eclipsesource.com">
     Christian Petrov
   </author>
+  <plugin name="cordova-plugin-fastrde-downloader" spec="0.2.1" />
 </widget>

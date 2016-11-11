@@ -1,16 +1,25 @@
-var page = new tabris.Page({
-  title: 'Example App',
-  topLevel: true
+downloader.init({folder: "testApp"});
+downloader.get("https://wordpress.org/plugins/about/readme.txt");
+
+["DOWNLOADER_initialized",
+"DOWNLOADER_gotFileSystem",
+"DOWNLOADER_gotFolder",
+"DOWNLOADER_error",
+"DOWNLOADER_noWifiConnection",
+"DOWNLOADER_downloadSuccess",
+"DOWNLOADER_downloadError",
+"DOWNLOADER_downloadProgress",
+"DOWNLOADER_unzipSuccess",
+"DOWNLOADER_unzipError",
+"DOWNLOADER_unzipProgress",
+"DOWNLOADER_fileRemoved",
+"DOWNLOADER_fileRemoveError",
+"DOWNLOADER_getFileError,",
+"DOWNLOADER_fileCheckSuccess",
+"DOWNLOADER_fileCheckFailed",
+"DOWNLOADER_fileCheckError"].forEach(function(eventName) {
+  document.addEventListener(eventName, function(event){
+    console.log(eventName + " fired.");
+    console.log(event.data);
+  });
 });
-
-var button = new tabris.Button({
-  centerX: 0, centerY: 100,
-  text: 'Log an error!'
-}).appendTo(page);
-
-button.on('select', function() {
-  console.error('Error!');
-});
-
-page.open();
-
